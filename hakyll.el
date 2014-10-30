@@ -15,7 +15,7 @@
 	(file-path (hakyll-post-path title yyyy mm dd)))
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: %s\ntags: %s\ndescription: \nauthor: Rob Nugen\ndate: %s-%s-%s\n---\n\n%s\n"
+     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s\n---\n\n%s\n\n"
              title
 	     (downcase tags)
 	     yyyy

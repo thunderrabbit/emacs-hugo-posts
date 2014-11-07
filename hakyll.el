@@ -8,6 +8,20 @@
 (defvar hakyll-site-location "~/journal/"
   "The location of the Hakyll files.")
 
+(defun hakyll-insert-image (alt-text)
+  "Insert an image from /images/yyyy/mm to current buffer /posts/yyyy/mm/dd/....md"
+  (interactive "sAltText: ")
+  (let ((yyyymm (substring buffer-file-name 35 42)))
+    (insert
+     (format "![%s](/images/%s/thumbs/"
+	     alt-text
+	     yyyymm
+	     ))
+    )
+  )
+
+  
+
 (defun hakyll-new-post (title tags yyyy mm dd)
   "Create a new Hakyll post for today with TITLE and TAGS."
   (interactive "sTitle: \nsTags: \nsYear: \nsMonth: \nsDay: ")

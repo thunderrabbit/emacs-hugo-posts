@@ -41,21 +41,29 @@
 (defun hakyll-post-title (title)
   "Return a file name based on TITLE for the post."
   (concat
-   (replace-regexp-in-string " " "-" (downcase title))
-   ".markdown"))
+   (url-safe-string title)
+   ".md"))
 
 (defun hakyll-post-path (title yyyy mm dd)
   "Return a file path based on TITLE and date."
   (concat
    yyyy "/" mm "/" dd "/"
-   (replace-regexp-in-string " " "-" (downcase title))
-   ".markdown"))
+   (url-safe-string title)
+   ".md"))
 
 (defun hakyll-note-title (title)
   "Return a file name based on TITLE for the note."
   (concat
-   (replace-regexp-in-string " " "-" (downcase title))
-   ".markdown"))
+   (url-safe-string title)
+   ".md"))
+
+(defun url-safe-string (title)
+  "Return a URL-safe title based on TITLE."
+  (replace-regexp-in-string "[:!]" ""
+    (replace-regexp-in-string " " "-" (downcase title))
+    )
+  )
+
 
 (provide 'hakyll)
 ;;; hakyll.el ends here

@@ -20,11 +20,16 @@
     )
   )
 
-  
-
 (defun hakyll-new-post (title tags yyyy mm dd)
   "Create a new Hakyll post for today with TITLE and TAGS."
-  (interactive "sTitle: \nsTags: \nsYear: \nsMonth: \nsDay: ")
+  (interactive (list
+		(read-string "Title: ")
+		(read-string "Tags: ")
+                (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
+                (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
+                (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
+		)
+	       )
   (let (
 	(file-name (hakyll-post-title title))
 	(file-path (hakyll-post-path title yyyy mm dd))

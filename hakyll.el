@@ -25,8 +25,10 @@
 (defun hakyll-new-post (title tags yyyy mm dd)
   "Create a new Hakyll post for today with TITLE and TAGS."
   (interactive "sTitle: \nsTags: \nsYear: \nsMonth: \nsDay: ")
-  (let ((file-name (hakyll-post-title title))
-	(file-path (hakyll-post-path title yyyy mm dd)))
+  (let (
+	(file-name (hakyll-post-title title))
+	(file-path (hakyll-post-path title yyyy mm dd))
+	)
     (set-buffer (get-buffer-create file-path))
     (insert
      (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s\n---\n\n%s\n\n"

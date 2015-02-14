@@ -36,17 +36,19 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s\n---\n\n%s\n\n"
+     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s %s\n---\n\n%s\n\n"
              title
 	     (downcase tags)
 	     yyyy
 	     mm
 	     dd
+	     (format-time-string "%H:%M JST")
 	     (format-time-string "##%H:%M %A %d %B %Y %Z##")
-        ))
+	     ))
     (write-file
      (expand-file-name file-path (concat hakyll-site-location "posts")))
     (switch-to-buffer file-name)
+    (auto-fill-mode)
     ))
 
 (defun hakyll-new-note (title)
@@ -80,7 +82,7 @@
 
 (defun url-safe-string (title)
   "Return a URL-safe title based on TITLE."
-  (replace-regexp-in-string "[:!]" ""
+  (replace-regexp-in-string "[:!']" ""
     (replace-regexp-in-string " " "-" (downcase title))
     )
   )

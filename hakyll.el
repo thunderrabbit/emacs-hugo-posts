@@ -46,7 +46,7 @@
 	     (format-time-string "##%H:%M %A %d %B %Y %Z##")
 	     ))
     (write-file
-     (expand-file-name file-path (concat hakyll-site-location "posts")))
+     (expand-file-name file-path (concat hakyll-site-location "")))
     (switch-to-buffer file-name)
     (auto-fill-mode)
     ))

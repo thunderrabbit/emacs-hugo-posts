@@ -31,7 +31,7 @@
 		)
 	       )
   (let (
-	(file-name (hakyll-post-title title))
+	(file-name (hakyll-post-title dd title))
 	(file-path (hakyll-post-path title yyyy mm dd))
 	)
     (set-buffer (get-buffer-create file-path))
@@ -49,7 +49,8 @@
      (expand-file-name file-path (concat hakyll-site-location "")))
     (switch-to-buffer file-name)
     (auto-fill-mode)
-    ))
+  )
+)
 
 (defun hakyll-new-note (title)
   "Create a new Note with TITLE."
@@ -59,18 +60,18 @@
     (insert (format "---\ntitle: %s\ndescription: \n---\n\n" title))
     (write-file
      (expand-file-name file-name (concat hakyll-site-location "notes")))
-    (switch-to-buffer file-name)))
+    (switch-to-buffer file-path)))
 
-(defun hakyll-post-title (title)
+(defun hakyll-post-title (dd title)
   "Return a file name based on TITLE for the post."
-  (concat
+  (concat dd
    (url-safe-string title)
    ".md"))
 
 (defun hakyll-post-path (title yyyy mm dd)
   "Return a file path based on TITLE and date."
   (concat
-   yyyy "/" mm "/" dd "/"
+   yyyy "/" mm "/" dd
    (url-safe-string title)
    ".md"))
 

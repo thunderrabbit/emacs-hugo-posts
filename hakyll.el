@@ -20,6 +20,70 @@
     )
   )
 
+(defun hakyll-new-dream-post (title tags yyyy mm dd)
+  "Create a new Hakyll post for today with TITLE and TAGS."
+  (interactive (list
+		(read-string (format "Title: (%s):" "Dream") nil nil "Dream") 
+		(read-string (format "Tags: (%s):" "dream") nil nil "dream")
+                (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
+                (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
+                (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
+		)
+	       )
+  (let (
+	(file-name (hakyll-post-title dd title))
+	(file-path (hakyll-post-path title yyyy mm dd))
+	)
+    (set-buffer (get-buffer-create file-path))
+    (insert
+     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s %s\n---\n\n%s\n\n"
+             title
+	     (downcase tags)
+	     yyyy
+	     mm
+	     dd
+	     (format-time-string "%H:%M JST")
+	     (format-time-string "##%H:%M %A %d %B %Y %Z##")
+	     ))
+    (write-file
+     (expand-file-name file-path (concat hakyll-site-location "")))
+    (switch-to-buffer file-name)
+    (auto-fill-mode)
+  )
+)
+
+(defun hakyll-new-japanese-post (title tags yyyy mm dd)
+  "Create a new Hakyll post for today with TITLE and TAGS."
+  (interactive (list
+		(read-string (format "Title: (%s):" "日本語を勉強しました") nil nil "日本語を勉強しました")
+		(read-string (format "Tags: (%s):" "日本語") nil nil "日本語")
+                (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
+                (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
+                (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
+		)
+	       )
+  (let (
+	(file-name (hakyll-post-title dd title))
+	(file-path (hakyll-post-path title yyyy mm dd))
+	)
+    (set-buffer (get-buffer-create file-path))
+    (insert
+     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s %s\n---\n\n%s\n\n###Below is NOT recommended as a resource to study Japanese!\n\n"
+             title
+	     (downcase tags)
+	     yyyy
+	     mm
+	     dd
+	     (format-time-string "%H:%M JST")
+	     (format-time-string "##%H:%M %A %d %B %Y %Z##")
+	     ))
+    (write-file
+     (expand-file-name file-path (concat hakyll-site-location "")))
+    (switch-to-buffer file-name)
+    (auto-fill-mode)
+  )
+)
+
 (defun hakyll-new-post (title tags yyyy mm dd)
   "Create a new Hakyll post for today with TITLE and TAGS."
   (interactive (list

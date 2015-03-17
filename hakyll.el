@@ -68,7 +68,7 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s %s\n---\n\n%s\n\n###Below is NOT recommended as a resource to study Japanese!\n\n"
+     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s %s\n---\n\n%s\n\n###There are probably errors in the Japanese notes below!\n\n"
              title
 	     (downcase tags)
 	     yyyy

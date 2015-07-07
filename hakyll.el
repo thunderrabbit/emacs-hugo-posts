@@ -36,14 +36,14 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s %s\n---\n\n%s\n\n"
+     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
              title
 	     (downcase tags)
 	     yyyy
 	     mm
 	     dd
-	     (format-time-string "%H:%M JST")
-	     (format-time-string "##%H:%M %A %d %B %Y %Z##")
+	     (format-time-string "%H:%M:%S+09:00")
+	     (format-time-string "## %H:%M %A %d %B %Y %Z")
 	     ))
     (write-file
      (expand-file-name file-path (concat hakyll-site-location "")))
@@ -68,14 +68,14 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s %s\n---\n\n%s\n\n###There are probably errors in the Japanese notes below!\n\n"
+     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n### There are probably errors in the Japanese notes below!\n\n"
              title
 	     (downcase tags)
 	     yyyy
 	     mm
 	     dd
-	     (format-time-string "%H:%M JST")
-	     (format-time-string "##%H:%M %A %d %B %Y %Z##")
+	     (format-time-string "%H:%M:%S+09:00")
+	     (format-time-string "## %H:%M %A %d %B %Y %Z")
 	     ))
     (write-file
      (expand-file-name file-path (concat hakyll-site-location "")))
@@ -100,14 +100,14 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%s %s\n---\n\n%s\n\n"
+     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
              title
 	     (downcase tags)
 	     yyyy
 	     mm
 	     dd
-	     (format-time-string "%H:%M JST")
-	     (format-time-string "##%H:%M %A %d %B %Y %Z##")
+	     (format-time-string "%H:%M:%S+09:00")
+	     (format-time-string "## %H:%M %A %d %B %Y %Z")
 	     ))
     (write-file
      (expand-file-name file-path (concat hakyll-site-location "")))

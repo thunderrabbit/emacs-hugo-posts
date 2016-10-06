@@ -20,6 +20,9 @@
     )
   )
 
+(fset 'ruby-tag-create-region
+   "\C-w<ruby><rb>\C-y</rb><rt></rt></ruby>")
+
 (defun hakyll-new-dream-post (title tags yyyy mm dd)
   "Create a new Hakyll post for today with TITLE and TAGS."
   (interactive (list

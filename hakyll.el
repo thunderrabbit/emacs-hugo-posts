@@ -1,14 +1,14 @@
-;;; hakyll.el --- Convenience functions for working with Hakyll.
+;;; journal.el --- Convenience functions for working with journal.
 ;;
 ;;; Commentary:      
-;; Convenience functions for working with Hakyll.
+;; Convenience functions for working with journal.
 
 ;;; Code:
 
-(defvar hakyll-site-location "~/journal/"
-  "The location of the Hakyll files.")
+(defvar journal-site-location "~/journal/"
+  "The location of the journal files.")
 
-(defun hakyll-insert-image (alt-text)
+(defun journal-insert-image (alt-text)
   "Insert an image from /images/yyyy/mm to current buffer /posts/yyyy/mm/dd/....md"
   (interactive "sAltText: ")
   (let ((yyyymm (substring buffer-file-name 35 42)))
@@ -23,8 +23,8 @@
 (fset 'ruby-tag-create-region
    "\C-w<ruby><rb>\C-y</rb><rt></rt></ruby>")
 
-(defun hakyll-new-dream-post (title tags yyyy mm dd)
-  "Create a new Hakyll post for today with TITLE and TAGS."
+(defun journal-new-dream-post (title tags yyyy mm dd)
+  "Create a new journal post for today with TITLE and TAGS."
   (interactive (list
 		(read-string (format "Title: (%s):" "Dream") nil nil "Dream") 
 		(read-string (format "Tags: (%s):" "dream") nil nil "dream")
@@ -34,8 +34,8 @@
 		)
 	       )
   (let (
-	(file-name (hakyll-post-title dd title))
-	(file-path (hakyll-post-path title yyyy mm dd))
+	(file-name (journal-post-title dd title))
+	(file-path (journal-post-path title yyyy mm dd))
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
@@ -49,14 +49,14 @@
 	     (format-time-string "## %H:%M %A %d %B %Y %Z")
 	     ))
     (write-file
-     (expand-file-name file-path (concat hakyll-site-location "")))
+     (expand-file-name file-path (concat journal-site-location "")))
     (switch-to-buffer file-name)
     (auto-fill-mode)
   )
 )
 
-(defun hakyll-new-japanese-post (title tags yyyy mm dd)
-  "Create a new Hakyll post for today with TITLE and TAGS."
+(defun journal-new-japanese-post (title tags yyyy mm dd)
+  "Create a new journal post for today with TITLE and TAGS."
   (interactive (list
 		(read-string (format "Title: (%s):" "日本語を勉強しました") nil nil "日本語を勉強しました")
 		(read-string (format "Tags: (%s):" "日本語") nil nil "日本語")
@@ -66,8 +66,8 @@
 		)
 	       )
   (let (
-	(file-name (hakyll-post-title dd title))
-	(file-path (hakyll-post-path title yyyy mm dd))
+	(file-name (journal-post-title dd title))
+	(file-path (journal-post-path title yyyy mm dd))
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
@@ -81,43 +81,62 @@
 	     (format-time-string "## %H:%M %A %d %B %Y %Z")
 	     ))
     (write-file
-     (expand-file-name file-path (concat hakyll-site-location "")))
+     (expand-file-name file-path (concat journal-site-location "")))
     (switch-to-buffer file-name)
     (auto-fill-mode)
   )
 )
 
-(defun hakyll-new-post (title tags yyyy mm dd)
-  "Create a new Hakyll post for today with TITLE and TAGS."
+(defun journal-new-post (title tags yyyy mm dd)
+  "Create a new journal post for today with TITLE and TAG."
   (interactive (list
-		(read-string "Title: ")
-		(read-string "Tags: ")
+                (read-string "Title: ")
+                (journal-read-tags)
                 (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
                 (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
                 (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
-		)
-	       )
+                )
+               )
   (let (
-	(file-name (hakyll-post-title dd title))
-	(file-path (hakyll-post-path title yyyy mm dd))
-	)
+        (file-name (journal-post-title dd title))
+        (file-path (journal-post-path title yyyy mm dd))
+        )
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
+     (format "---\ntitle: %s\ntags: [ %s, \"\" ]\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
              title
-	     (downcase tags)
-	     yyyy
-	     mm
-	     dd
-	     (format-time-string "%H:%M:%S+09:00")
-	     (format-time-string "## %H:%M %A %d %B %Y %Z")
-	     ))
+             (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
+                   tags ", ")
+             yyyy
+             mm
+             dd
+             (format-time-string "%H:%M:%S+09:00")
+             (format-time-string "## %H:%M %A %d %B %Y %Z")
+             ))
     (write-file
-     (expand-file-name file-path (concat hakyll-site-location "")))
+     (expand-file-name file-path (concat journal-site-location "")))
     (switch-to-buffer file-name)
     (auto-fill-mode)
   )
 )
+
+(defun my-test (title tags)
+   (interactive (list (read-string "Title: ") (journal-read-tags)))
+   (message "%s: %s" title
+
+(mapconcat (lambda (x) (format "'%s'" x))
+           tags ", ")
+
+            ))
+
+(defun journal-read-tags ()
+  (let (tags tag done)
+    (while (not done)
+      (setq tag (read-string "Tag: "))
+      (if (= (length tag) 0)
+          (setq done t)
+        (push tag tags)))
+    (nreverse tags)))
 
 ;;;  http://stackoverflow.com/a/251922
 
@@ -145,30 +164,30 @@ Note the weekly scope of the command's precision.")
        (insert "\n")
   )
 
-(defun hakyll-new-note (title)
+(defun journal-new-note (title)
   "Create a new Note with TITLE."
   (interactive "sTitle: ")
-  (let ((file-name (hakyll-note-title title)))
+  (let ((file-name (journal-note-title title)))
     (set-buffer (get-buffer-create file-name))
     (insert (format "---\ntitle: %s\ndescription: \n---\n\n" title))
     (write-file
-     (expand-file-name file-name (concat hakyll-site-location "notes")))
+     (expand-file-name file-name (concat journal-site-location "notes")))
     (switch-to-buffer file-path)))
 
-(defun hakyll-post-title (dd title)
+(defun journal-post-title (dd title)
   "Return a file name based on TITLE for the post."
   (concat dd
    (url-safe-string title)
    ".md"))
 
-(defun hakyll-post-path (title yyyy mm dd)
+(defun journal-post-path (title yyyy mm dd)
   "Return a file path based on TITLE and date."
   (concat
    yyyy "/" mm "/" dd
    (url-safe-string title)
    ".md"))
 
-(defun hakyll-note-title (title)
+(defun journal-note-title (title)
   "Return a file name based on TITLE for the note."
   (concat
    (url-safe-string title)
@@ -182,5 +201,5 @@ Note the weekly scope of the command's precision.")
   )
 
 
-(provide 'hakyll)
+(provide 'journal)
 ;;; hakyll.el ends here

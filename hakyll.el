@@ -66,8 +66,8 @@
 		)
 	       )
   (let (
-	(file-name (journal-post-title dd title))
-	(file-path (journal-post-path title yyyy mm dd))
+	(file-name (journal-post-title dd "studied japanese"))
+	(file-path (journal-post-path "studied japanese" yyyy mm dd))
 	)
     (set-buffer (get-buffer-create file-path))
     (insert

@@ -39,7 +39,7 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
+     (format "---\ntitle: \"%s\"\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
              title
 	     (downcase tags)
 	     yyyy
@@ -71,7 +71,7 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: %s\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n### There are probably errors in the Japanese notes below!\n\n"
+     (format "---\ntitle: \"%s\"\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n### There are probably errors in the Japanese notes below!\n\n"
              title
 	     (downcase tags)
 	     yyyy
@@ -103,7 +103,7 @@
         )
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: %s\ntags: [ %s, \"\" ]\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
+     (format "---\ntitle: \"%s\"\ntags: [ %s, \"\" ]\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
              title
              (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
                    tags ", ")

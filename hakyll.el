@@ -27,7 +27,7 @@
   "Create a new journal post for today with TITLE and TAGS."
   (interactive (list
 		(read-string (format "Title: (%s):" "Dream") nil nil "Dream") 
-		(read-string (format "Tags: (%s):" "dream") nil nil "dream")
+		            (journal-read-tags)
                 (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
                 (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
                 (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
@@ -39,9 +39,10 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: \"%s\"\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
+     (format "---\ntitle: \"%s\"\ntags: [ %s, \"\" ]\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
              title
-	     (downcase tags)
+	     (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
+                   tags ", ")
 	     yyyy
 	     mm
 	     dd
@@ -59,7 +60,7 @@
   "Create a new journal post for today with TITLE and TAGS."
   (interactive (list
 		(read-string (format "Title: (%s):" "日本語を勉強しました") nil nil "日本語を勉強しました")
-		(read-string (format "Tags: (%s):" "日本語") nil nil "日本語")
+                (journal-read-tags)
                 (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
                 (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
                 (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
@@ -71,9 +72,10 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: \"%s\"\ntags: %s\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n### There are probably errors in the Japanese notes below!\n\n"
+     (format "---\ntitle: \"%s\"\ntags: [ %s, \"\" ]\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n### There are probably errors in the Japanese notes below!\n\n"
              title
-	     (downcase tags)
+	     (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
+                   tags ", ")
 	     yyyy
 	     mm
 	     dd

@@ -27,7 +27,7 @@
   "Create a new journal post for today with TITLE and TAGS."
   (interactive (list
 		(read-string (format "Title: (%s):" "Dream") nil nil "Dream") 
-		            (journal-read-tags)
+		            (journal-read-tags nil)
                 (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
                 (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
                 (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
@@ -60,7 +60,7 @@
   "Create a new journal post for today with TITLE and TAGS."
   (interactive (list
 		(read-string (format "Title: (%s):" "日本語を勉強しました") nil nil "日本語を勉強しました")
-                (journal-read-tags)
+                (journal-read-tags nil)
                 (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
                 (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
                 (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
@@ -93,7 +93,7 @@
   "Create a new journal post for today with TITLE and TAG."
   (interactive (list
                 (read-string "Title: ")
-                (journal-read-tags)
+                (journal-read-tags nil)
                 (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
                 (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
                 (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
@@ -131,8 +131,8 @@
 
             ))
 
-(defun journal-read-tags ()
-  (let (tags tag done)
+(defun journal-read-tags (tags)
+  (let (tag done)
     (while (not done)
       (setq tag (read-string "Tag: "))
       (if (= (length tag) 0)

@@ -1,0 +1,16 @@
+---
+title: "%s"
+tags: [ %s ]
+author: Rob Nugen
+date: %s-%s-%sT%s
+---
+
+%s
+
+<p class="dream">
+
+</p>
+
+<p class="dream">
+
+</p>

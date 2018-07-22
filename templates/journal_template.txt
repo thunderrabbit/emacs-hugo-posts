@@ -1,0 +1,9 @@
+---
+title: "%s"
+tags: [ %s ]
+author: Rob Nugen
+date: %s-%s-%sT%s
+---
+
+%s
+

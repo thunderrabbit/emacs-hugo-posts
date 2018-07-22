@@ -1,0 +1,11 @@
+---
+title: "%s"
+tags: [ %s ]
+author: Rob Nugen
+date: %s-%s-%sT%s
+---
+
+%s
+
+### There are probably errors in the Japanese notes below!
+

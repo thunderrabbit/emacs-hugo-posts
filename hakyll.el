@@ -21,7 +21,7 @@
   )
 
 (fset 'ruby-tag-create-region
-   "\C-w<ruby><rb>\C-y</rb><rt></rt></ruby>")
+   "\C-w<ruby><rb>\C-y</rb><rt></rt></ruby>\C-b\C-b\C-b\C-b\C-b\C-b\C-b\C-b\C-b\C-b\C-b\C-b")
 
 (defun journal-new-dream-post (title tags yyyy mm dd)
   "Create a new journal post for today with TITLE and TAGS."

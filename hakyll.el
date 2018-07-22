@@ -23,6 +23,10 @@
 (fset 'ruby-tag-create-region
    "\C-w<ruby><rb>\C-y</rb><rt></rt></ruby>\C-b\C-b\C-b\C-b\C-b\C-b\C-b\C-b\C-b\C-b\C-b\C-b")
 
+(fset 'hugo-youtube
+   [?\C-e escape ?\C-r ?/ ?\\ ?| ?= return right ?\C-k ?\C-a ?\{ ?\{ ?< ?  ?y ?o ?u ?t ?u ?b ?e ?  ?\C-y ?  ?> ?\} ?\} ?\C-k right])
+
+
 (defun journal-new-dream-post (title tags yyyy mm dd)
   "Create a new journal post for today with TITLE and TAGS."
   (interactive (list

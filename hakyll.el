@@ -46,7 +46,7 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: \"%s\"\ntags: [ %s ]\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
+     (format (get-string-from-file (expand-file-name "dream_template.txt" location-journal-template-files))
              title
 	     (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
                    tags ", ")
@@ -79,7 +79,7 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: \"%s\"\ntags: [ %s ]\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n### There are probably errors in the Japanese notes below!\n\n"
+     (format (get-string-from-file (expand-file-name "nihongo_template.txt" location-journal-template-files))
              title
 	     (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
                    tags ", ")
@@ -112,7 +112,7 @@
         )
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format "---\ntitle: \"%s\"\ntags: [ %s ]\nauthor: Rob Nugen\ndate: %s-%s-%sT%s\n---\n\n%s\n\n"
+     (format (get-string-from-file (expand-file-name "journal_template.txt" location-journal-template-files))
              title
              (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
                    tags ", ")

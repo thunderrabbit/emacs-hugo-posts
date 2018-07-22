@@ -135,6 +135,14 @@
 
             ))
 
+(defun get-string-from-file (filePath)
+  "Return filePath's file content."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string)))
+;; thanks to “Pascal J Bourguignon” and “TheFlyingDutchman 〔zzbba…@aol.com〕”. 2010-09-02
+;; via http://ergoemacs.org/emacs/elisp_read_file_content.html  2018-07-21
+
 (defun journal-read-tags (tags)
   (let (tag done)
     (while (not done)

@@ -8,6 +8,9 @@
 (defvar journal-site-location "~/journal/"
   "The location of the journal files.")
 
+(defvar location-journal-template-files "~/.emacs.d/personal/hakyll/templates/"
+  "The location of templates used in this file")
+
 (defun journal-insert-image (alt-text)
   "Insert an image from /images/yyyy/mm to current buffer /posts/yyyy/mm/dd/....md"
   (interactive "sAltText: ")

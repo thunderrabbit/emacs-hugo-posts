@@ -1,0 +1,8 @@
+---
+title: "%s"
+tags: [ %s ]
+author: Rob Nugen
+youtube: 
+date: %s-%s-%sT%s
+---
+

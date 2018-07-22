@@ -8,6 +8,9 @@
 (defvar journal-site-location "~/journal/"
   "The location of the journal files.")
 
+(defvar mt3-site-location "~/mt3/site/content/episode"
+  "The location of the journal files.")
+
 (defvar location-journal-template-files "~/.emacs.d/personal/hakyll/templates/"
   "The location of templates used in this file")
 
@@ -62,6 +65,7 @@
     (auto-fill-mode)
   )
 )
+
 
 (defun journal-new-japanese-post (title tags yyyy mm dd)
   "Create a new journal post for today with TITLE and TAGS."

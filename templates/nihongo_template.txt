@@ -5,7 +5,7 @@ author: Rob Nugen
 date: %s-%s-%sT%s
 ---
 
-%s
+##### %s
 
 ### There are probably errors in the Japanese notes below!
 

@@ -67,7 +67,7 @@
 	     mm
 	     dd
 	     (format-time-string "%H:%M:%S+09:00")
-	     (format-time-string "## %H:%M %A %d %B %Y %Z")
+	     (format-time-string "%H:%M %A %d %B %Y %Z")
 	     ))
     (write-file
      (expand-file-name file-path (concat journal-site-location "")))
@@ -101,7 +101,7 @@
 	     mm
 	     dd
 	     (format-time-string "%H:%M:%S+09:00")
-	     (format-time-string "## %H:%M %A %d %B %Y %Z")
+	     (format-time-string "%H:%M %A %d %B %Y %Z")
 	     ))
     (write-file
      (expand-file-name file-path (concat journal-site-location "")))
@@ -134,7 +134,7 @@
              mm
              dd
              (format-time-string "%H:%M:%S+09:00")
-             (format-time-string "## %H:%M %A %d %B %Y %Z")
+             (format-time-string "%H:%M %A %d %B %Y %Z")
              ))
     (write-file
      (expand-file-name file-path (concat journal-site-location "")))
@@ -204,11 +204,11 @@
     (nreverse tags)))
 
 ;;;  http://stackoverflow.com/a/251922
-(defvar current-date-time-format "## %H:%M %A %d %B %Y %Z"
+(defvar current-date-time-format "##### %H:%M %A %d %B %Y %Z"
   "Format of date to insert with `insert-current-date-time' func
 See help of `format-time-string' for possible replacements")
 
-(defvar current-time-format "## %H:%M"
+(defvar current-time-format "##### %H:%M"
   "Format of date to insert with `insert-current-time' func.
 Note the weekly scope of the command's precision.")
 

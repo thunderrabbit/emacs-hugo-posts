@@ -18,10 +18,10 @@
 (defvar journal-site-location "~/journal/"
   "The location of the journal files.")
 
-(defvar mt3-site-location "~/mt3/site/content/episode"
+(defvar mt3-site-location "~/mt3.com/content/episode"
   "The location of the journal files.")
 
-(defvar location-journal-template-files "~/.emacs.d/personal/hakyll/templates/"
+(defvar location-journal-template-files "~/.emacs.d/personal/hugo/templates/"
   "The location of templates used in this file")
 
 (defun journal-insert-image (alt-text)

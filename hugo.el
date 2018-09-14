@@ -143,6 +143,39 @@
   )
 )
 
+(defun mt3-new-episode (title tags yyyy mm dd)
+  "Create a new episode for Marble Track 3 .com with TITLE and TAGs."
+  (interactive (list
+                (read-string "Title: ")
+                (journal-read-tags nil)
+                (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
+                (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
+                (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
+                )
+               )
+  (let (
+        (file-name (journal-post-title dd title))
+        (file-path (journal-post-path title yyyy mm dd))
+        )
+    (set-buffer (get-buffer-create file-path))
+    (insert
+     (format (get-string-from-file (expand-file-name "mt3_episode_template.txt" location-journal-template-files))
+             title
+             (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
+                   tags ", ")
+             yyyy
+             mm
+             dd
+             (format-time-string "%H:%M:%S+09:00")
+             (format-time-string "%H:%M %A %d %B %Y %Z")
+             ))
+    (write-file
+     (expand-file-name file-path (concat mt3-site-location "")))
+    (switch-to-buffer file-name)
+    (auto-fill-mode)
+  )
+)
+
 (defun my-test (title tags)
    (interactive (list (read-string "Title: ") (journal-read-tags)))
    (message "%s: %s" title

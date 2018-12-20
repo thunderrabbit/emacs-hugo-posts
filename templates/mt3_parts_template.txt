@@ -1,0 +1,22 @@
++++
+title = "%s"
+type = "parts"
+tags = [ %s ]
+thumbnail = ""
+image = ""
+description = "%s"
+weight = 0520
+workers = [
+    "mr_mcglue",
+    "g_choppy"
+]
+aliases = [
+    "/p/%s"
+]
+date = %s-%s-%sT%s
++++
+
+
+History:
+
+* %s

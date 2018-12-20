@@ -230,7 +230,7 @@ Note the weekly scope of the command's precision.")
 (defun journal-new-note (title)
   "Create a new Note with TITLE."
   (interactive "sTitle: ")
-  (let ((file-name (journal-note-title title)))
+  (let ((file-name (journal-no-date-path title)))
     (set-buffer (get-buffer-create file-name))
     (insert (format "---\ntitle: %s\ndescription: \n---\n\n" title))
     (write-file
@@ -250,7 +250,7 @@ Note the weekly scope of the command's precision.")
    (url-safe-string title)
    ".md"))
 
-(defun journal-note-title (title)
+(defun journal-no-date-path (title)
   "Return a file name based on TITLE for the note."
   (concat
    (url-safe-string title)

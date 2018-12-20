@@ -19,7 +19,7 @@
   "The location of the journal files.")
 
 (defvar mt3-site-location "~/mt3.com/content/"
-  "The location of the journal files.")
+  "The location of Marble Track 3 site.")
 
 (defvar location-journal-template-files "~/.emacs.d/personal/hugo/templates/"
   "The location of templates used in this file")

@@ -18,7 +18,7 @@
 (defvar journal-site-location "~/journal/"
   "The location of the journal files.")
 
-(defvar mt3-site-location "~/mt3.com/content/episode"
+(defvar mt3-site-location "~/mt3.com/content/"
   "The location of the journal files.")
 
 (defvar location-journal-template-files "~/.emacs.d/personal/hugo/templates/"
@@ -170,7 +170,7 @@
              (format-time-string "%H:%M %A %d %B %Y %Z")
              ))
     (write-file
-     (expand-file-name file-path (concat mt3-site-location "")))
+     (expand-file-name file-path (concat mt3-site-location "episode")))
     (switch-to-buffer file-name)
     (auto-fill-mode)
   )

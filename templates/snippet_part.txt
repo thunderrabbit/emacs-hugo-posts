@@ -1,0 +1,3 @@
+  '%s':
+    'prefix': '%s'
+    'body': '[%s](/parts/%s/)'

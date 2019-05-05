@@ -24,6 +24,8 @@
 (defvar location-journal-template-files "~/.emacs.d/personal/hugo/templates/"
   "The location of templates used in this file")
 
+(defvar location-atom-snippets "~/.atom/snippets.cson"  "Atom uses these for autocompletes")
+
 (defun journal-insert-image (alt-text)
   "Insert an image from /images/yyyy/mm to current buffer /posts/yyyy/mm/dd/....md"
   (interactive "sAltText: ")
@@ -251,6 +253,17 @@
     (write-file (expand-file-name file-path (concat mt3-site-location "parts")))
     (switch-to-buffer file-path)
     (auto-fill-mode)
+    (switch-to-buffer (find-file-noselect location-atom-snippets))
+    (end-of-buffer)
+         (insert
+          (format
+          (get-string-from-file (expand-file-name "snippet_part.txt" location-journal-template-files))
+           title
+     	     shortcode
+           title
+     	     file-path
+     	     ))
+    (save-buffer)
   )
 )
 

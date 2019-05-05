@@ -46,7 +46,7 @@
 (defun journal-new-dream-post (title tags yyyy mm dd)
   "Create a new journal post for today with TITLE and TAGS."
   (interactive (list
-		(read-string (format "Title: (%s):" "Dream") nil nil "Dream") 
+		(read-string (format "Title: (%s):" "Dream") nil nil "Dream")
 		            (journal-read-tags nil)
                 (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
                 (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
@@ -143,8 +143,9 @@
   )
 )
 
-(defun mt3-new-episode (title tags yyyy mm dd)
-  "Create a new episode for Marble Track 3 .com with TITLE and TAGs."
+
+(defun new-storylog-post (title tags yyyy mm dd)
+  "Create a new storylog for Step on Red Dot speech stories on DATE with TITLE and TAG."
   (interactive (list
                 (read-string "Title: ")
                 (journal-read-tags nil)
@@ -159,10 +160,48 @@
         )
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format (get-string-from-file (expand-file-name "mt3_episode_template.txt" location-journal-template-files))
+     (format (get-string-from-file (expand-file-name "storylog_template.txt" location-journal-template-files))
              title
              (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
                    tags ", ")
+             yyyy
+             mm
+             dd
+             (format-time-string "%H:%M:%S+09:00")
+             (format-time-string "%H:%M %A %d %B %Y %Z")
+             ))
+    (write-file
+     (expand-file-name file-path (concat journal-site-location "")))
+    (switch-to-buffer file-name)
+    (auto-fill-mode)
+  )
+)
+
+(defun mt3-new-episode (title tags image youtubeurl yyyy mm dd)
+  "Create a new episode for Marble Track 3 .com with TITLE and TAGs."
+  (interactive (list
+                (read-string "Title: ")
+                (journal-read-tags nil)
+		(read-string "Image: " nil nil "/img/guest/default-guest.png")
+		(read-string "YouTube: " nil nil "https://www.youtube.com/watch?v=cbbXuNWLp6A")
+                (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
+                (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
+                (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
+                )
+               )
+  (let (
+        (file-name (journal-post-title dd title))
+        (file-path (journal-post-path title yyyy mm dd))
+        )
+    (set-buffer (get-buffer-create file-path))
+    (insert
+     (format (get-string-from-file (expand-file-name "mt3_episode_template.txt" location-journal-template-files))
+             title
+             (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
+			tags ", ")
+	     (youtube-id youtubeurl)
+	     image
+	     (thumbnail-path image)
              yyyy
              mm
              dd
@@ -176,12 +215,13 @@
   )
 )
 
-(defun mt3-new-part (title tags shortcode yyyy mm dd)
+(defun mt3-new-part (title shortcode tags image yyyy mm dd)
   "Create a new track part for Marble Track 3 .com with TITLE, TAGs, and shortcode."
   (interactive (list
                 (read-string "Title: ")
-                (journal-read-tags nil)
 		(read-string "Shortcode: ")
+                (journal-read-tags nil)
+		(read-string "Image: " nil nil "/img/guest/default-guest.png")
                 (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
                 (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
                 (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
@@ -196,7 +236,9 @@
      (format (get-string-from-file (expand-file-name "mt3_parts_template.txt" location-journal-template-files))
              title
              (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
-                   tags ", ")
+			tags ", ")
+	     image
+	     (thumbnail-path image)
              title
 	     shortcode
              yyyy
@@ -210,6 +252,18 @@
     (auto-fill-mode)
   )
 )
+
+(defun thumbnail-path (image_url)
+  (concat
+   (file-name-directory image_url)
+   "thumbs/"
+   (file-name-nondirectory image_url)
+   )
+  )
+
+(defun youtube-id (youtube_url)
+  (car (last (split-string youtube_url "[/|=]")))
+  )
 
 (defun my-test (title tags)
    (interactive (list (read-string "Title: ") (journal-read-tags)))

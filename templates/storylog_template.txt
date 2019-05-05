@@ -1,0 +1,41 @@
+---
+title: "(story logging) %s"
+tags: [ "story", "emotions", "speech", "sotrd", %s ]
+author: Rob Nugen
+date: %s-%s-%sT%s
+---
+
+##### %s
+
+    Write a few sentences about something you did during your ordinary day.  
+
+
+    Which one of these simple event of the day had an odd moment? Or
+    evoked an emotion such as aggravation, frustration, surprise,
+    miscommunication.  **Name the emotion.**
+
+
+    What were you trying to achieve?  What did you want?
+
+
+    What was stopping you from getting what you wanted?  Was the block
+    internal or external?
+
+
+    Why was this important to you?  **Was there a backstory** that would
+    help us understand why this is so important?
+
+
+    What **lesson** did you learn from all of this?
+
+
+    What **change** can we make in our lives from here on?
+
+
+    Write a Haiku or two about it: 
+
+
+    Write a story about it:
+
+
+

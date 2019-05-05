@@ -2,10 +2,9 @@
 title = "%s"
 type = "parts"
 tags = [ %s ]
-thumbnail = ""
-image = ""
+image = "%s"
+thumbnail = "%s"
 description = "%s"
-weight = 0520
 workers = [
     "mr_mcglue",
     "g_choppy"
@@ -19,4 +18,4 @@ date = %s-%s-%sT%s
 
 History:
 
-* %s
+* %s: 

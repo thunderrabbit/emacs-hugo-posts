@@ -59,10 +59,10 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format (get-string-from-file (expand-file-name "dream_template.txt" location-journal-template-files))
-             title
-	     (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
-                   tags ", ")
+     (format
+       (get-string-from-file (expand-file-name "dream_template.txt" location-journal-template-files))
+       title
+	     (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))  tags ", ")
 	     yyyy
 	     mm
 	     dd
@@ -93,16 +93,17 @@
 	)
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format (get-string-from-file (expand-file-name "nihongo_template.txt" location-journal-template-files))
-             title
-	     (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
-                   tags ", ")
+     (format
+       (get-string-from-file (expand-file-name "nihongo_template.txt" location-journal-template-files))
+       title
+	     (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))  tags ", ")
 	     yyyy
 	     mm
 	     dd
 	     (format-time-string "%H:%M:%S+09:00")
 	     (format-time-string "%H:%M %A %d %B %Y %Z")
-	     ))
+	   )
+    )
     (write-file
      (expand-file-name file-path (concat journal-site-location "")))
     (switch-to-buffer file-name)
@@ -126,10 +127,10 @@
         )
     (set-buffer (get-buffer-create file-path))
     (insert
-     (format (get-string-from-file (expand-file-name "journal_template.txt" location-journal-template-files))
+     (format
+             (get-string-from-file (expand-file-name "journal_template.txt" location-journal-template-files))
              title
-             (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
-                   tags ", ")
+             (mapconcat (lambda (x) (format "\"%s\"" (downcase x))) tags ", ")
              yyyy
              mm
              dd
@@ -162,8 +163,7 @@
     (insert
      (format (get-string-from-file (expand-file-name "storylog_template.txt" location-journal-template-files))
              title
-             (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
-                   tags ", ")
+             (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))  tags ", ")
              yyyy
              mm
              dd
@@ -182,8 +182,8 @@
   (interactive (list
                 (read-string "Title: ")
                 (journal-read-tags nil)
-		(read-string "Image: " nil nil "/img/guest/default-guest.png")
-		(read-string "YouTube: " nil nil "https://www.youtube.com/watch?v=cbbXuNWLp6A")
+		            (read-string "Image: " nil nil "/img/guest/default-guest.png")
+	            	(read-string "YouTube: " nil nil "https://www.youtube.com/watch?v=cbbXuNWLp6A")
                 (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
                 (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
                 (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
@@ -197,11 +197,10 @@
     (insert
      (format (get-string-from-file (expand-file-name "mt3_episode_template.txt" location-journal-template-files))
              title
-             (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))
-			tags ", ")
-	     (youtube-id youtubeurl)
-	     image
-	     (thumbnail-path image)
+             (mapconcat (lambda (x) (format "\"%s\"" (downcase x)))	tags ", ")
+      	     (youtube-id youtubeurl)
+	           image
+	           (thumbnail-path image)
              yyyy
              mm
              dd

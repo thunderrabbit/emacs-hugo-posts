@@ -243,7 +243,8 @@
            title
      	     (file-name-sans-extension file-path)  ;; https://stackoverflow.com/a/8716106/194309
      	     ))
-    (save-buffer)
+	 (save-buffer)
+	 (kill-buffer)
     (set-buffer (get-buffer-create file-path))
     (insert
       (format

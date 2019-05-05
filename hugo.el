@@ -233,6 +233,17 @@
         (file-name (journal-post-title dd title))
         (file-path (journal-no-date-path title))
         )
+    (switch-to-buffer (find-file-noselect location-atom-snippets))
+    (end-of-buffer)
+         (insert
+          (format
+          (get-string-from-file (expand-file-name "snippet_part.txt" location-journal-template-files))
+           title
+     	     shortcode
+           title
+     	     (file-name-sans-extension file-path)  ;; https://stackoverflow.com/a/8716106/194309
+     	     ))
+    (save-buffer)
     (set-buffer (get-buffer-create file-path))
     (insert
       (format
@@ -253,17 +264,6 @@
     (write-file (expand-file-name file-path (concat mt3-site-location "parts")))
     (switch-to-buffer file-path)
     (auto-fill-mode)
-    (switch-to-buffer (find-file-noselect location-atom-snippets))
-    (end-of-buffer)
-         (insert
-          (format
-          (get-string-from-file (expand-file-name "snippet_part.txt" location-journal-template-files))
-           title
-     	     shortcode
-           title
-     	     file-path
-     	     ))
-    (save-buffer)
   )
 )
 

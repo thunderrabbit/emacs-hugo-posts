@@ -1,6 +1,6 @@
 ---
 title: "%s"
-tags: [ %s ]
+tags: [ "dream", %s ]
 author: Rob Nugen
 date: %s-%s-%sT%s
 ---

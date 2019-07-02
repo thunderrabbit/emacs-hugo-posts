@@ -16,7 +16,10 @@
 ;;;
 
 (defvar journal-site-location "~/journal/"
-  "The location of the journal files.")
+  "The location of the journal files (in their own repo).")
+
+(defvar blog-site-location "~/journal-hugo/content/blog/"
+  "The location of the blog files (included in new.robnugen.com site itself).")
 
 (defvar mt3-site-location "~/mt3.com/content/"
   "The location of Marble Track 3 site.")
@@ -146,6 +149,42 @@
   )
 )
 
+;;;;;;;;;;;;;;   begin blog post
+
+(defun blog-new-post (title tags yyyy mm dd)
+  "Create a new blog post for today with TITLE and TAG."
+  (interactive (list
+                (read-string "Title: ")
+                (journal-read-tags nil)
+                (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
+                (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
+                (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
+                )
+               )
+  (let (
+        (file-name (journal-post-title dd title))
+        (file-path (journal-post-path title yyyy mm dd))
+        )
+    (set-buffer (get-buffer-create file-path))
+    (insert
+     (format
+             (get-string-from-file (expand-file-name "blog_template.txt" location-journal-template-files))
+             title
+             (mapconcat (lambda (x) (format "\"%s\"" (downcase x))) tags ", ")
+             yyyy
+             mm
+             dd
+             (format-time-string "%H:%M:%S+09:00")
+             (format-time-string "%H:%M %A %d %B %Y %Z")
+             ))
+    (write-file
+     (expand-file-name file-path (concat blog-site-location "")))
+    (switch-to-buffer file-name)
+    (auto-fill-mode)
+  )
+)
+
+;;;;;;;;;;;;;;   end blog post
 
 (defun new-storylog-post (title tags yyyy mm dd)
   "Create a new storylog for Step on Red Dot speech stories on DATE with TITLE and TAG."

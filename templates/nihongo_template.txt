@@ -1,6 +1,6 @@
 ---
 title: "%s"
-tags: [ %s ]
+tags: [ "日本語", %s ]
 author: Rob Nugen
 date: %s-%s-%sT%s
 ---

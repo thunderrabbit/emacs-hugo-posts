@@ -6,5 +6,3 @@ author: Rob Nugen
 date: %s-%s-%sT%s
 ---
 
-##### %s
-

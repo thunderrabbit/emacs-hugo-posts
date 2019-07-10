@@ -175,7 +175,6 @@
              mm
              dd
              (format-time-string "%H:%M:%S+09:00")
-             (format-time-string "%H:%M %A %d %B %Y %Z")
              ))
     (write-file
      (expand-file-name file-path (concat blog-site-location "")))

@@ -18,7 +18,7 @@
 (defvar journal-site-location "~/journal/"
   "The location of the journal files (in their own repo).")
 
-(defvar blog-site-location "~/journal-hugo/content/blog/"
+(defvar blog-site-location "~/barefoot_rob/content/blog/"
   "The location of the blog files (included in new.robnugen.com site itself).")
 
 (defvar mt3-site-location "~/mt3.com/content/"

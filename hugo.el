@@ -21,6 +21,9 @@
 (defvar blog-site-location "~/barefoot_rob/content/blog/"
   "The location of the blog files (included in new.robnugen.com site itself).")
 
+(defvar event-entry-location "~/barefoot_rob/content/events/"
+  "Event entries might eventually be driven by an ics file, but that will probably never happen so let's see how long I can maintain them this way.")
+
 (defvar mt3-site-location "~/mt3.com/content/"
   "The location of Marble Track 3 site.")
 
@@ -149,6 +152,48 @@
   )
 )
 
+;;;;;;;;;;;;;;   begin event post   PUBLISH on yyyy/mm/dd   and post in the event_yyyy/event_mm/ directory
+
+(defun event-new-post (event_yyyy event_mm event_dd event_time event_location title tags yyyy mm dd)
+  "Create a new event with its own event date and publish date with TITLE, and TAGs."
+  (interactive (list
+                (read-string (format "Event Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
+                (read-string (format "Event Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
+                (read-string (format "Event Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
+                (read-string "Time: ")
+                (read-string "Location: ")
+                (read-string "Title: ")
+                (journal-read-tags nil)
+                (read-string (format "Year (%s): " (format-time-string "%Y")) nil nil (format-time-string "%Y"))
+                (read-string (format "Month (%s): " (format-time-string "%m")) nil nil (format-time-string "%m"))
+                (read-string (format "Date (%s): " (format-time-string "%d")) nil nil (format-time-string "%d"))
+                )
+               )
+  (let (
+        (file-name (journal-post-title event_dd title))
+        (file-path (journal-post-path title event_yyyy event_mm event_dd))
+        )
+    (set-buffer (get-buffer-create file-path))
+    (insert
+     (format
+             (get-string-from-file (expand-file-name "event_template.txt" location-journal-template-files))
+             title
+             (mapconcat (lambda (x) (format "\"%s\"" (downcase x))) tags ", ")
+             yyyy
+             mm
+             dd
+             (format-time-string "%H:%M:%S+09:00")
+	     (format "%s %s" event_time (format-time-string "%A %e %B %Y" (date-to-time (format "%s-%s-%sT12:00:00+0900" event_yyyy event_mm event_dd))))
+	     event_location
+             ))
+    (write-file
+     (expand-file-name file-path (concat event-entry-location "")))
+    (switch-to-buffer file-name)
+    (auto-fill-mode)
+  )
+)
+
+;;;;;;;;;;;;;;   end event post
 ;;;;;;;;;;;;;;   begin blog post
 
 (defun blog-new-post (title tags yyyy mm dd)

@@ -3,7 +3,8 @@ title: "%s"
 tags: [ %s ]
 author: Rob Nugen
 date: %s-%s-%sT%s
+draft: false
 ---
 
-##### %s
+(written %s)
 

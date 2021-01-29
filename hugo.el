@@ -27,7 +27,7 @@
 (defvar mt3-site-location "~/mt3.com/content/"
   "The location of Marble Track 3 site.")
 
-(defvar location-journal-template-files "~/.emacs.d/personal/hugo/templates/"
+(defvar location-journal-template-files "~/.emacs.d/modes/hugo/templates/"
   "The location of templates used in this file")
 
 (defvar location-atom-snippets "~/.atom/snippets.cson"  "Atom uses these for autocompletes")

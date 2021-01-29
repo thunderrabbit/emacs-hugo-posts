@@ -450,6 +450,18 @@ Note the weekly scope of the command's precision.")
     )
   )
 
+(global-set-key (kbd "C-c j") 'journal-new-post)
+(global-set-key (kbd "C-c d") 'journal-new-dream-post)
+(global-set-key (kbd "C-c n") 'journal-new-japanese-post)
+(global-set-key (kbd "C-c r") 'ruby-tag-create-region)
+(global-set-key (kbd "C-c b") 'blog-new-post)
+(global-set-key (kbd "C-c e") 'event-new-post)
+(global-set-key (kbd "C-c m") 'mt3-new-episode)
+(global-set-key (kbd "C-c p") 'mt3-new-part)
+(global-set-key (kbd "C-c y") 'hugo-youtube)
+(global-set-key (kbd "C-c !") 'create-thumbs-with-b\.robnugen\.com-image-url-on-single-line)
+(global-set-key (kbd "C-c 3") 'markdown-timestamp-short)
+(global-set-key (kbd "C-c #") 'markdown-timestamp-full)
 
 (provide 'journal)
 ;;; hugo.el ends here

@@ -3,6 +3,8 @@ title: "%s"
 tags: [ "event", %s ]
 author: Rob Nugen
 date: %s-%s-%sT%s
+EventTime: "%s"
+EventDate: "%s"
 ---
 
 <img

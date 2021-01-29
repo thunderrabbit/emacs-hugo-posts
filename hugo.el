@@ -185,6 +185,8 @@
              mm
              dd
              (format-time-string "%H:%M:%S+09:00")
+	     event_time
+	     (format "%s-%s-%s" event_yyyy event_mm event_dd)
 	     (format "%s %s" event_time (format-time-string "%A %e %B %Y" (date-to-time (format "%s-%s-%sT12:00:00+0900" event_yyyy event_mm event_dd))))
 	     event_location
              ))

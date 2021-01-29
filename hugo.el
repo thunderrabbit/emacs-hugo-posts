@@ -463,5 +463,7 @@ Note the weekly scope of the command's precision.")
 (global-set-key (kbd "C-c 3") 'markdown-timestamp-short)
 (global-set-key (kbd "C-c #") 'markdown-timestamp-full)
 
+
+; what does provide do here??
 (provide 'journal)
 ;;; hugo.el ends here

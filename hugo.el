@@ -1,5 +1,5 @@
-;;;    hugo.el --- functions for adding entries in a Hugo site.
-;;;    Copyright (C) 2013 Rob Nugen
+;;    hugo.el --- functions for adding entries in a Hugo site.
+;;;    Copyright (C) 2013-2021 Rob Nugen
 ;;;
 ;;;    This program is free software: you can redistribute it and/or modify
 ;;;    it under the terms of the GNU General Public License as published by

@@ -1,0 +1,21 @@
+Hey Rob
+
+How's stuff?
+
+I am really proud of you for prepping so hard for your walk.  I
+presume it went wonderfully!  Were you able to do a candle meditation
+each day?
+
+Anyway, right now I am writing this on my Lemur, and about to do some blending of hardlinks and such to make things hopefully make more sense.
+
+There are four (4) places for these files to be used.  Emacs and Atom, both on Lemur and Macbook Pro.
+
+This file is on both Lemur and Macbook Pro.
+
+* Lemur at ~/.emacs.d/modes/hugo/templates/README.ROB
+* MBP at ~/.emacs.d/personal/hugo/templates/README.ROB
+
+I am about to create some hardlinks of this file and some of the template files.
+
+BRB
+

@@ -129,3 +129,12 @@ And now re-hardlink them here on MBP
     -rw-rw-r--   2 thunderrabbit  staff   217 Apr 10 17:09 niigata_2021_walking_update.txt
 
 Yahooo! This two ^ says there are 2 inodes(?) to the file, i.e. the hardlinks were created.
+
+18:21 Atom was a bit hesitant to notice the changed file, but
+basically it is all working on both machines.
+
+Now I will create a hardlink of this README.ROB in the ~/barefoot_rob/templates/ directory
+
+    ln /Users/thunderrabbit/.emacs.d/personal/hugo/templates/README.ROB /Users/thunderrabbit/barefoot_rob/templates/README.ROB
+
+Yayyyyy now just need to create the symlink over on Lemur..

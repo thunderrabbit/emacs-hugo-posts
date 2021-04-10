@@ -36,12 +36,12 @@ with the hope that (will not make Hugo mad and) will allow the
 Steps:
 
 * determine what files to link
-* hardlink them here on MBP from this repo to
+* hardlink them on Lemur from this repo to `/home/thunderrabbit/barefoot_rob/templates/`
 * push this repo
 * push ~/barefoot_rob repo
 * pull the repo on Lemur
-* pull ~/barefoot_rob repo on Lemur
-* erase one copy and re-hardlink the files together on Lemur
+* pull ~/barefoot_rob repo on MBP
+* erase one copy and re-hardlink the files together on MBP
 * push everything (should be no changes)
 * change one thing (push and make sure it shows up everywhere)
 
@@ -53,7 +53,7 @@ Ready?  Go!
     /home/thunderrabbit/.emacs.d/modes/hugo/templates/event_walking_meditation_template.txt
     /home/thunderrabbit/.emacs.d/modes/hugo/templates/niigata_2021_walking_update.txt
 
-17:34 Aha!  This is the very problem.  The above URLS are on Lemur, not on this machine.   Okay back to Lemur we go...
+((17:34 Aha!  This is the very problem.  The above URLS are on Lemur, not on this machine.   Okay back to Lemur we go...))
 
 17:35 okay on Lemur again now, about to create hardlinks from the files above to ~/barefoot_rob/templates/
 
@@ -62,5 +62,3 @@ Ready?  Go!
     ln /home/thunderrabbit/.emacs.d/modes/hugo/templates/niigata_2021_walking_update.txt /home/thunderrabbit/barefoot_rob/templates/niigata_2021_walking_update.txt
 
 17:46 Done creating hardlinks on Lemur.
-
-    

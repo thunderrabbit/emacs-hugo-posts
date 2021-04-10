@@ -1,21 +1,56 @@
 Hey Rob
 
+17:19pm 10 April 2021
+
 How's stuff?
 
 I am really proud of you for prepping so hard for your walk.  I
 presume it went wonderfully!  Were you able to do a candle meditation
 each day?
 
-Anyway, right now I am writing this on my Lemur, and about to do some blending of hardlinks and such to make things hopefully make more sense.
+Anyway, right now I am writing this on my Lemur, and about to do some
+blending of hardlinks and such to make things hopefully make more
+sense.
 
-There are four (4) places for these files to be used.  Emacs and Atom, both on Lemur and Macbook Pro.
+There are four (4) places for these files to be used.  Emacs and Atom,
+both on Lemur and Macbook Pro.
 
 This file is on both Lemur and Macbook Pro.
 
 * Lemur at ~/.emacs.d/modes/hugo/templates/README.ROB
 * MBP at ~/.emacs.d/personal/hugo/templates/README.ROB
 
-I am about to create some hardlinks of this file and some of the template files.
+I am about to create some hardlinks of this file and some of the
+template files.
 
 BRB
 
+17:24pm Okay, I have just pushed this to the repo and am now writing
+on my Macbook Pro.  I wrote the date and faked the date above.
+
+Plan: hardlink the template files (used in
+`~/barefoot_rob/generate_events.pl`) to `~/barefoot_rob/templates/`,
+with the hope that (will not make Hugo mad and) will allow the
+`generate_events.pl` to work on both MBP and Lemur machines.
+
+Steps:
+
+* determine what files to link
+* hardlink them here on MBP from this repo to
+* push this repo
+* push ~/barefoot_rob repo
+* pull the repo on Lemur
+* pull ~/barefoot_rob repo on Lemur
+* erase one copy and re-hardlink the files together on Lemur
+* push everything (should be no changes)
+* change one thing (push and make sure it shows up everywhere)
+
+Ready?  Go!
+
+17:30pm files to link on MBP (via `~/barefoot_rob/generate_events.pl`):
+
+    /home/thunderrabbit/.emacs.d/modes/hugo/templates/event_weekly-alignment_template.txt
+    /home/thunderrabbit/.emacs.d/modes/hugo/templates/event_walking_meditation_template.txt
+    /home/thunderrabbit/.emacs.d/modes/hugo/templates/niigata_2021_walking_update.txt
+
+17:34 Aha!  This is the very problem.  The above URLS are on Lemur, not on this machine.   Okay back to Lemur we go...

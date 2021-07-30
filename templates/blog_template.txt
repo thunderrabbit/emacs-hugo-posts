@@ -4,12 +4,15 @@ tags: [ %s ]
 categories: [ "blog" ]
 author: Rob Nugen
 draft: false
-date: %s-%s-%sT%s
+date: %s
+aliases: [
+    "alias_path",
+]
 ---
 
 <img
-src="//b.robnugen.com/blog/2021/have_the_courage_to_follow_your_heart_and_intuition.jpg"
-alt="Have the courage to follow your heart and intuition"
+src="%episode_image"
+alt=""
 class="title" />
 
-<div class="note">(image credit: https://hipwallpaper.com/view/Gtg24n)</div>
+<div class="note">(image credit: )</div>

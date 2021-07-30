@@ -53,6 +53,10 @@
 (fset 'create-thumbs-with-b\.robnugen\.com-image-url-on-single-line
    [?\C-e ?\C-r ?/ return ?\C-f ?\C-k ?\C-y ?\C-x ?b ?* ?j ?h ?h ?g ?a ?a return ?\C-y backspace backspace backspace backspace ?\C-a escape ?x ?r ?e ?p ?l tab ?s ?t tab return ?_ return ?  return ?\C-a ?\C-k ?\C-x ?k return ?\C-a ?\[ ?! ?\[ ?\C-y ?\] ?\( ?\C-s ?/ ?/ return ?\C-b ?\C-b ?\C-w ?\C-f ?\C-f ?\C-b ?\C-b ?\C-k ?\) ?\] ?\( ?\C-y ?\) ?\C-a return ?\C-p ?\C-y ?\C-r ?/ return ?/ ?t ?h ?u ?m ?b ?s ?\C-a ?\C-k ?\C-d ?\C-s ?\] ?\( ?\) ?\] return left left ?\C-y ?\C-a ?\C-n])
 
+(fset 'create-title-with-image-url-on-single-line
+      (kmacro-lambda-form [?\C-a ?\C-k ?\C-x ?b ?* ?1 ?2 ?3 ?4 ?5 ?6 ?7 return ?\C-y return ?\C-y ?\C-e backspace backspace backspace backspace ?\C-r ?/ return right return escape ?x ?r ?e ?p ?l ?a tab ?s ?t ?r ?i ?n ?g return ?_ return ?  return ?\C-a up ?\C-k up ?\C-k ?\C-x ?b return ?< ?i ?m ?g ?  ?s ?r ?c ?= ?\" ?\C-y ?\" return ?a ?l ?t ?= ?\" ?\C-x ?b return down down ?\C-k ?\C-x ?k return ?\C-y ?\" return ?c ?l ?a ?s ?s ?= ?\" ?t ?i ?t ?l ?e ?\" ?  ?/ ?> ?\C-a up up right right right right delete return down down down] 0 "%d"))
+
+
 (defun journal-new-dream-post (title tags yyyy mm dd)
   "Create a new journal post for today with TITLE and TAGS."
   (interactive (list
@@ -464,6 +468,7 @@ Note the weekly scope of the command's precision.")
 (global-set-key (kbd "C-c p") 'mt3-new-part)
 (global-set-key (kbd "C-c y") 'hugo-youtube)
 (global-set-key (kbd "C-c !") 'create-thumbs-with-b\.robnugen\.com-image-url-on-single-line)
+(global-set-key (kbd "C-c 1") 'create-title-with-image-url-on-single-line)
 (global-set-key (kbd "C-c 3") 'markdown-timestamp-short)
 (global-set-key (kbd "C-c #") 'markdown-timestamp-full)
 

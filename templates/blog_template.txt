@@ -1,18 +1,10 @@
 ---
 title: "%s"
 tags: [ %s ]
-categories: [ "blog" ]
 author: Rob Nugen
+date: %s-%s-%sT%s
 draft: false
-date: %s
-aliases: [
-    "alias_path",
-]
 ---
 
-<img
-src="%episode_image"
-alt=""
-class="title" />
+(written %s)
 
-<div class="note">(image credit: )</div>

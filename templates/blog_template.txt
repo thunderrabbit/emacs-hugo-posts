@@ -3,8 +3,8 @@ title: "%s"
 tags: [ %s ]
 categories: [ "blog" ]
 author: Rob Nugen
-date: %s-%s-%sT%s
 draft: false
+date: %s
 ---
 
 (written %s)

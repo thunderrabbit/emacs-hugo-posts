@@ -221,7 +221,7 @@
     (set-buffer (get-buffer-create file-path))
     (insert
      (format
-             (get-string-from-file (expand-file-name "journal_template.txt" location-journal-template-files))
+             (get-string-from-file (expand-file-name "blog_template.txt" location-journal-template-files))
              title
              (mapconcat (lambda (x) (format "\"%s\"" (downcase x))) tags ", ")
              yyyy
@@ -231,7 +231,7 @@
              (format-time-string "%H:%M %A %d %B %Y %Z")
              ))
     (write-file
-     (expand-file-name file-path (concat journal-site-location "")))
+     (expand-file-name file-path (concat blog-site-location "")))
     (switch-to-buffer file-name)
     (auto-fill-mode)
   )

@@ -224,7 +224,7 @@
              (get-string-from-file (expand-file-name "blog_template.txt" location-journal-template-files))
              title
              (mapconcat (lambda (x) (format "\"%s\"" (downcase x))) tags ", ")
-             (format-time-string "%H:%M %A %d %B %Y %Z")
+             (format-time-string "%Y-%m-%dT%H:%M:%S+09:00")
              ))
     (write-file
      (expand-file-name file-path (concat blog-site-location "")))

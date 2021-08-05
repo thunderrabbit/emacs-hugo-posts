@@ -225,7 +225,6 @@
              title
              (mapconcat (lambda (x) (format "\"%s\"" (downcase x))) tags ", ")
              (format-time-string "%H:%M %A %d %B %Y %Z")
-             (format-time-string "%H:%M %A %d %B %Y %Z")
              ))
     (write-file
      (expand-file-name file-path (concat blog-site-location "")))

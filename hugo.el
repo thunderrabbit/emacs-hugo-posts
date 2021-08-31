@@ -18,10 +18,10 @@
 (defvar journal-site-location "~/journal/"
   "The location of the journal files (in their own repo).")
 
-(defvar blog-site-location "~/barefoot_rob/content/blog/"
-  "The location of the blog files (included in new.robnugen.com site itself).")
+(defvar blog-site-location "~/barefoot_rob_master/content/blog/"
+  "The location of the blog files (included in www.robnugen.com site itself).")
 
-(defvar event-entry-location "~/barefoot_rob/content/events/"
+(defvar event-entry-location "~/barefoot_rob_master/content/events/"
   "Event entries might eventually be driven by an ics file, but that will probably never happen so let's see how long I can maintain them this way.")
 
 (defvar mt3-site-location "~/mt3.com/content/"

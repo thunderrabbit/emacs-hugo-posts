@@ -56,6 +56,9 @@
 (fset 'create-title-with-image-url-on-single-line
       (kmacro-lambda-form [?\C-a ?\C-k ?\C-x ?b ?* ?1 ?2 ?3 ?4 ?5 ?6 ?7 return ?\C-y return ?\C-y ?\C-e backspace backspace backspace backspace ?\C-r ?/ return right return escape ?x ?r ?e ?p ?l ?a tab ?s ?t ?r ?i ?n ?g return ?_ return ?  return ?\C-a up ?\C-k up ?\C-k ?\C-x ?b return ?< ?i ?m ?g ?  ?s ?r ?c ?= ?\" ?\C-y ?\" return ?a ?l ?t ?= ?\" ?\C-x ?b return down down ?\C-k ?\C-x ?k return ?\C-y ?\" return ?c ?l ?a ?s ?s ?= ?\" ?t ?i ?t ?l ?e ?\" ?  ?/ ?> ?\C-a up up right right right right delete return down down down] 0 "%d"))
 
+(fset 'create-img-responsive-and-alt-with-image-url
+   (kmacro-lambda-form [?\{ ?\{ ?% ?  ?i ?m ?g ?- ?r ?e ?s ?p ?o ?n ?s ?i ?v ?e ?  ?\" ?\C-k ?\C-y ?\" ?  ?\C-x ?b ?\C-8 ?* ?\C-y return ?\C-y ?\C-r ?/ return right return ?\C-e ?\C-r ?. return ?\C-k ?\C-a escape ?x ?r ?e ?p ?l ?a tab ?s ?t ?r tab return ?_ return ?  return ?\C-a ?\C-k ?\C-x ?k return ?\" ?\C-y ?\" ?  ?% ?\} ?\} ?\C-a down] 0 "%d"))
+
 
 (defun journal-new-dream-post (title tags yyyy mm dd)
   "Create a new journal post for today with TITLE and TAGS."
@@ -466,6 +469,7 @@ Note the weekly scope of the command's precision.")
 (global-set-key (kbd "C-c y") 'hugo-youtube)
 (global-set-key (kbd "C-c !") 'create-thumbs-with-b\.robnugen\.com-image-url-on-single-line)
 (global-set-key (kbd "C-c 1") 'create-title-with-image-url-on-single-line)
+(global-set-key (kbd "C-c i") 'create-img-responsive-and-alt-with-image-url)
 (global-set-key (kbd "C-c 3") 'markdown-timestamp-short)
 (global-set-key (kbd "C-c #") 'markdown-timestamp-full)
 
